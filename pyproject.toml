@@ -1,27 +1,27 @@
 [build-system]
 requires = [
-    "setuptools>=61.0",
-    "meson>=0.64",
+    "meson-python>=0.15.0",
+    "meson>=1.1.0",
     "numpy>=1.22",
     "scipy>=1.8",
-    "gfortran"
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "mesonpy"
 
 [project]
 name = "GmGM_BaileyA"
-version = 0.0.1
+version = "0.0.1"
 authors = [
-    {
-        name="Bailey Andrew",
-        email="sceba@leeds.ac.uk"
-    },
+    {name="Bailey Andrew", email="sceba@leeds.ac.uk"},
 ]
 description = "A multi-modal multi-axis Gaussian graphical model implementing the work 'GmGM: A fast multi-omics graphical model' by Andrew et al."
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT",
     "Operating System :: OS Independent",
 ]
