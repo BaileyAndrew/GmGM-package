@@ -15,7 +15,7 @@ from typing import Optional
 # Imports `extract`_d_values and functions
 # of form `project_inv_kron_sum_{2,3,4,5,6}`
 # and functions of form `sum_log_sum_{2,3,4,5,6}`
-from fortran import *
+from fortran_core import fortran_core
 
 from regularizers import Regularizer
 
@@ -159,25 +159,25 @@ def project_inv_kron_sum(
     K: int
 ):
     if K == 2:
-        return project_inv_kron_sum_2(
+        return fortran_core.project_inv_kron_sum_2(
             evals[axis_names[tensor_name][0]],
             evals[axis_names[tensor_name][1]]
         )
     elif K == 3:
-        return project_inv_kron_sum_3(
+        return fortran_core.project_inv_kron_sum_3(
             evals[axis_names[tensor_name][0]],
             evals[axis_names[tensor_name][1]],
             evals[axis_names[tensor_name][2]]
         )
     elif K == 4:
-        return project_inv_kron_sum_4(
+        return fortran_core.project_inv_kron_sum_4(
             evals[axis_names[tensor_name][0]],
             evals[axis_names[tensor_name][1]],
             evals[axis_names[tensor_name][2]],
             evals[axis_names[tensor_name][3]]
         )
     elif K == 5:
-        return project_inv_kron_sum_5(
+        return fortran_core.project_inv_kron_sum_5(
             evals[axis_names[tensor_name][0]],
             evals[axis_names[tensor_name][1]],
             evals[axis_names[tensor_name][2]],
@@ -185,7 +185,7 @@ def project_inv_kron_sum(
             evals[axis_names[tensor_name][4]]
         )
     elif K == 6:
-        return project_inv_kron_sum_6(
+        return fortran_core.project_inv_kron_sum_6(
             evals[axis_names[tensor_name][0]],
             evals[axis_names[tensor_name][1]],
             evals[axis_names[tensor_name][2]],
@@ -213,15 +213,15 @@ def sum_log_sum(
         """
         K = len(args)
         if K == 2:
-            log_err: float = sum_log_sum_2(*args)
+            log_err: float = fortran_core.sum_log_sum_2(*args)
         elif K == 3:
-            log_err: float = sum_log_sum_3(*args)
+            log_err: float = fortran_core.sum_log_sum_3(*args)
         elif K == 4:
-            log_err: float = sum_log_sum_4(*args)
+            log_err: float = fortran_core.sum_log_sum_4(*args)
         elif K == 5:
-            log_err: float = sum_log_sum_5(*args)
+            log_err: float = fortran_core.sum_log_sum_5(*args)
         elif K == 6:
-            log_err: float = sum_log_sum_6(*args)
+            log_err: float = fortran_core.sum_log_sum_6(*args)
         else:
             raise ValueError(
                 "Only 2-6 way tensors are supported"
@@ -335,7 +335,7 @@ def GmGM(
     right_sizes: dict[str, np.ndarray] = {}
 
     for tensor_name, tensor in dataset.items():
-        full_size, left_size, right_size = extract_d_values(
+        full_size, left_size, right_size = fortran_core.extract_d_values(
             tensor.shape
         )
         full_sizes[tensor_name] = full_size
