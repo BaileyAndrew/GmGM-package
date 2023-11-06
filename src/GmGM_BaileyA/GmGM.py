@@ -4,13 +4,18 @@ import numpy as np
 
 from typing import Optional
 
-from extract_d_values import extract_d_values
+#from extract_d_values import extract_d_values
 
 # Imports functions of form project_inv_kron_sum_{2,3,4,5,6}
-from project_inv_kron_sum import *
+#from project_inv_kron_sum import *
 
 # Imports functions of form sum_log_sum_{2,3,4,5,6}
-from sum_log_sum import *
+#from sum_log_sum import *
+
+# Imports `extract`_d_values and functions
+# of form `project_inv_kron_sum_{2,3,4,5,6}`
+# and functions of form `sum_log_sum_{2,3,4,5,6}`
+from fortran import *
 
 from regularizers import Regularizer
 

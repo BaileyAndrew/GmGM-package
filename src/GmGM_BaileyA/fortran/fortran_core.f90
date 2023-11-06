@@ -1,7 +1,4 @@
 module fortran_core
-    ! TODO: uncomment and integrate
-    ! use iso_c_binding
-    ! TODO: set double precision
     implicit none
 
     contains

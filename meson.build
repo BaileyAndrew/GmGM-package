@@ -1,7 +1,7 @@
 project('GmGM_BaileyA', 'c',
   version : '0.0.1',
   license: 'MIT',
-  meson_version: '>=0.64.0',
+  meson_version: '>=1.1.0',
   default_options : ['warning_level=2'],
 )
 
@@ -23,9 +23,12 @@ incdir_f2py = run_command(py,
 
 inc_np = include_directories(incdir_numpy, incdir_f2py)
 
+# Need to manually run f2py in the fortran directory:
+# python -m numpy.f2py fortran_core.f90 -m fortran_core --quiet
 py.extension_module('fortran_core',
   [
     'src/GmGM_BaileyA/fortran/fortran_core.f90',
+    'src/GmGM_BaileyA/fortran/fortran_core-f2pywrappers2.f90',
     'src/GmGM_BaileyA/fortran/fortran_coremodule.c',  # note: this assumes f2py was manually run before!
   ],
   incdir_f2py / 'fortranobject.c',
